@@ -1,4 +1,12 @@
+﻿using MoserBlog.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+var services = builder.Services;
+
+services.AddPersistenceServices(builder.Configuration);
+
 
 builder.Services.AddControllersWithViews();
 
