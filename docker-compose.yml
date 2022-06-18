@@ -8,6 +8,8 @@ services:
       - "8080:80"
     depends_on:
       - db
+    env_file:
+      - .env
 
   db:
     image: "mcr.microsoft.com/mssql/server"
@@ -15,6 +17,5 @@ services:
       - "1433:1433"
     volumes:
       - app_db:/var/opt/mssql
-    environment:
-        SA_PASSWORD: ""
-        ACCEPT_EULA: "Y"
+    env_file:
+      - .env
