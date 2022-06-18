@@ -6,6 +6,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/MoserBlog.Web/MoserBlog.Web.csproj", "src/MoserBlog.Web/"]
 COPY ["src/MoserBlog.Persistence/MoserBlog.Persistence.csproj", "src/MoserBlog.Persistence/"]
+COPY ["src/MoserBlog.Application/MoserBlog.Application.csproj", "src/MoserBlog.Application/"]
 COPY ["src/MoserBlog.Domain/MoserBlog.Domain.csproj", "src/MoserBlog.Domain/"]
 
 RUN dotnet restore "src/MoserBlog.Web/MoserBlog.Web.csproj"

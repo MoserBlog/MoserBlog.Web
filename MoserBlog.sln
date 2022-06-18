@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Domain", "src\Mos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Persistence", "src\MoserBlog.Persistence\MoserBlog.Persistence.csproj", "{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Application", "src\MoserBlog.Application\MoserBlog.Application.csproj", "{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{41C765EA-AC48-4EF0-9966-70426D4156CF} = {8DD61235-2D00-46B8-83F6-79315DD93483}
 		{4DFB1A54-B474-4806-8910-AB844CD5608D} = {41C765EA-AC48-4EF0-9966-70426D4156CF}
 		{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B} = {A61ECFA1-9916-42E8-B242-E3775AD6CD55}
+		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C} = {41C765EA-AC48-4EF0-9966-70426D4156CF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD6E7134-E6A0-4358-8F00-891C9546E7D9}

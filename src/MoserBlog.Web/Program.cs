@@ -1,10 +1,12 @@
-﻿using MoserBlog.Persistence;
+﻿using MoserBlog.Application;
+using MoserBlog.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 var services = builder.Services;
 
+services.AddApplicationServices();
 services.AddPersistenceServices(builder.Configuration);
 
 
