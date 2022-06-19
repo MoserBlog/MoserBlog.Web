@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MoserBlog.Domain.Blog;
 using MoserBlog.Domain.Common;
 
 namespace MoserBlog.Persistence;
@@ -8,6 +9,11 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options) { }
 
+
+    public DbSet<BlogEntry> BlogEntries { get; set; }
+    public DbSet<ContentSection> ContentSections { get; set; }
+    public DbSet<Author> Authors { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
