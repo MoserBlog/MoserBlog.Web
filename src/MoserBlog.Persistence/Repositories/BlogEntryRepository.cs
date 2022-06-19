@@ -14,4 +14,15 @@ public class BlogEntryRepository : BaseRepository<BlogEntry>, IBlogEntryReposito
     {
         return await _dbContext.BlogEntries.FirstOrDefaultAsync(x => x.IsActive && x.UrlName.Equals(urlName));
     }
+
+
+    public async Task<IEnumerable<BlogEntry>> GetLatestForOverviewAsync(int amountOfElements)
+    {
+        return await _dbContext
+                          .BlogEntries
+                          .Where(x => x.IsActive)
+                          .OrderByDescending(x => x.PublishDate)
+                          .Take(amountOfElements)
+                          .ToListAsync();
+    }
 }
