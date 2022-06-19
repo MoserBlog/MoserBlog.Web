@@ -20,11 +20,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{41C765EA-AC48-4EF0-9966-70426D4156CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Domain", "src\MoserBlog.Domain\MoserBlog.Domain.csproj", "{4DFB1A54-B474-4806-8910-AB844CD5608D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoserBlog.Domain", "src\MoserBlog.Domain\MoserBlog.Domain.csproj", "{4DFB1A54-B474-4806-8910-AB844CD5608D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Persistence", "src\MoserBlog.Persistence\MoserBlog.Persistence.csproj", "{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoserBlog.Persistence", "src\MoserBlog.Persistence\MoserBlog.Persistence.csproj", "{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Application", "src\MoserBlog.Application\MoserBlog.Application.csproj", "{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoserBlog.Application", "src\MoserBlog.Application\MoserBlog.Application.csproj", "{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Application.UnitTests", "tests\MoserBlog.Application.UnitTests\MoserBlog.Application.UnitTests.csproj", "{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +50,10 @@ Global
 		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{4DFB1A54-B474-4806-8910-AB844CD5608D} = {41C765EA-AC48-4EF0-9966-70426D4156CF}
 		{ADD6991B-A9A7-4E94-A105-BDB9FBF8AC7B} = {A61ECFA1-9916-42E8-B242-E3775AD6CD55}
 		{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C} = {41C765EA-AC48-4EF0-9966-70426D4156CF}
+		{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA} = {863798EF-7C8E-4D72-8FA4-BAACCB25DCD3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CD6E7134-E6A0-4358-8F00-891C9546E7D9}
