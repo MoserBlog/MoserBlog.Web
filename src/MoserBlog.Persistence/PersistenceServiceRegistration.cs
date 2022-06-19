@@ -8,10 +8,12 @@ namespace MoserBlog.Persistence;
 
 public static class PersistenceServiceRegistration
 {
-    public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration, bool isDevelopmentEnv)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Environment.GetEnvironmentVariable("DB_CONNECTIONSTRING")));
+            options.UseSqlServer(isDevelopmentEnv
+                    ? configuration.GetConnectionString("DefaultConnection")
+                    : Environment.GetEnvironmentVariable("DB_CONNECTIONSTRING")));
 
 
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
