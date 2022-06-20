@@ -1,1 +1,1 @@
-# MoserBlog
+# MoserBlog.Web
