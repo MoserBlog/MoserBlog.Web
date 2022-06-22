@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using MoserBlog.Application.Features.BlogEntries.Queries.GetBlogEntryOverview;
 using MoserBlog.Web.Models;
 using System.Diagnostics;
 
@@ -7,15 +9,27 @@ namespace MoserBlog.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IMediator _mediator;
+        private readonly IConfiguration _configuration;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger,
+            IMediator mediator,
+            IConfiguration configuration)
         {
             _logger = logger;
+            _mediator = mediator;
+            _configuration = configuration;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var overviewViewModel = await _mediator.Send(new GetBlogEntryOverviewQuery()
+            {
+                AmountOfElements = Convert.ToInt32(_configuration["AmountOfOverviewItems"])
+            });
+
+            return View(overviewViewModel);
         }
 
         public IActionResult Privacy()

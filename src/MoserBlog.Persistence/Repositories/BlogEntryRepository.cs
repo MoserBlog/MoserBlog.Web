@@ -23,6 +23,8 @@ public class BlogEntryRepository : BaseRepository<BlogEntry>, IBlogEntryReposito
                           .Where(x => x.IsActive)
                           .OrderByDescending(x => x.PublishDate)
                           .Take(amountOfElements)
+                          .Include(x => x.Categories)
+                          .Include(x => x.Author)
                           .ToListAsync();
     }
 }

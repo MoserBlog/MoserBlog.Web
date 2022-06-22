@@ -9,7 +9,15 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<BlogEntry, BlogEntryDetailVm>().ReverseMap();
-        CreateMap<BlogEntry, BlogEntryOverviewVm>().ReverseMap();
+        CreateMap<BlogEntry, BlogEntryDetailVm>();
+
+        CreateMap<BlogEntry, BlogEntryOverviewVm>()
+            .ForMember(
+                dest => dest.Categories,
+                m => m.MapFrom(src => string.Join(", ", src.Categories.Select(x => x.Name).ToList())))
+            .ForMember(
+                dest => dest.AuthorName,
+                m => m.MapFrom(src => $"{src.Author.FirstName} {src.Author.LastName}"));
+
     }
 }
