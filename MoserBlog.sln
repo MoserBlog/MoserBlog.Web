@@ -26,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoserBlog.Persistence", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoserBlog.Application", "src\MoserBlog.Application\MoserBlog.Application.csproj", "{0F8BB7DF-B95F-40AF-8607-7219D4B9A79C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoserBlog.Application.UnitTests", "tests\MoserBlog.Application.UnitTests\MoserBlog.Application.UnitTests.csproj", "{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoserBlog.Application.UnitTests", "tests\MoserBlog.Application.UnitTests\MoserBlog.Application.UnitTests.csproj", "{04500D2F-0AB4-4095-AB7F-D01D49A8B9DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,16 +4,22 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>@ViewData["PageTitle"] - MoserBlog</title>
+        
+        <link rel="stylesheet" href="~/dist/base.bundle.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/dist/home.bundle.min.css" asp-append-version="true" />
     </head>
-    <body>
-        <header>
-            
-        </header>
-        <div class="container">
-            <main role="main">
-                @RenderBody()
-            </main>
-        </div>
+    <body class="page">
+
+        @await Html.PartialAsync("Layout/PageHeader")
+
+        <main role="main" class="page-content">
+            @RenderBody()
+        </main>
+        
+        @await Html.PartialAsync("Layout/PageFooter")
+
+        <script src="~/dist/base.bundle.min.js" asp-append-version="true" async></script>
+        <script src="~/dist/home.bundle.min.js" asp-append-version="true" async></script>
 
         @await RenderSectionAsync("Scripts", required: false)
     </body>
