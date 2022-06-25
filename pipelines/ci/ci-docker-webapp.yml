@@ -1,5 +1,9 @@
 trigger:
 - main
+- develop
+
+- feature/*
+- release/*
 
 resources:
 - repo: self
