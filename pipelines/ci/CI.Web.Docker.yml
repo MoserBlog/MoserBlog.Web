@@ -5,18 +5,22 @@ trigger:
 - feature/*
 - release/*
 
-resources:
-- repo: self
 
 variables:
   tag: '$(Build.BuildId)'
+  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+
+resources:
+- repo: self
+
 
 stages:
 - stage: Build
-  displayName: Build image
+  condition: eq(variables.isMain, 'false')
+  displayName: Build Image
   jobs:
   - job: Build
-    displayName: Build
+    displayName: Build Image
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -27,3 +31,17 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+
+- stage: BuildAndPublish
+  condition: and(succeeded(), eq(variables.isMain, 'true'))
+  displayName: Build and Publish Image
+  jobs:
+    - job: BuildAndPublish 
+      displayName: Build and Publish Image
+      steps:
+      - task: Docker@2
+        inputs:
+          containerRegistry: 'Docker Hub'
+          repository: 'philippmos/moserblog-web'
+          command: 'buildAndPush'
+          Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
