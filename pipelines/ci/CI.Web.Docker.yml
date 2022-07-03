@@ -16,10 +16,11 @@ resources:
 
 stages:
 - stage: Build
-  displayName: Build image
+  condition: eq(variables.isMain, 'false')
+  displayName: Build Image
   jobs:
   - job: Build
-    displayName: Build
+    displayName: Build Image
     pool:
       vmImage: ubuntu-latest
     steps:
@@ -31,15 +32,16 @@ stages:
         tags: |
           $(tag)
 
-- stage: Publish
-  # condition: and(succeeded(), eq(variables.isMain, 'true'))
-  displayName: Publish
+- stage: BuildAndPublish
+  condition: and(succeeded(), eq(variables.isMain, 'true'))
+  displayName: Build and Publish Image
   jobs:
-    - job: Publish
-      displayName: Publish
+    - job: BuildAndPublish 
+      displayName: Build and Publish Image
       steps:
       - task: Docker@2
         inputs:
           containerRegistry: 'Docker Hub'
-          repository: 'philippmos/moserblog'
-          command: 'push'
+          repository: 'philippmos/moserblog-web'
+          command: 'buildAndPush'
+          Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
