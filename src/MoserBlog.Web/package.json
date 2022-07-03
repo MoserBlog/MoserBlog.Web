@@ -6,10 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },
-  "dependencies": {
-    "moserblogweb-styles": "1.0.1"
-  },
   "devDependencies": {
+    "moserblogweb-styles": "1.0.1",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
     "webpack": "5.73.0",
