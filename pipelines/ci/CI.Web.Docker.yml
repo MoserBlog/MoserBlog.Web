@@ -35,12 +35,11 @@ stages:
   # condition: and(succeeded(), eq(variables.isMain, 'true'))
   displayName: Publish
   jobs:
-    - job: Publish 
+    - job: Publish
       displayName: Publish
       steps:
       - task: Docker@2
         inputs:
           containerRegistry: 'Docker Hub'
-          repository: 'philippmos/moserblog-web'
-          command: 'buildAndPush'
-          Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+          repository: 'philippmos/moserblog'
+          command: 'push'
