@@ -33,7 +33,7 @@ stages:
           $(tag)
 
 - stage: BuildAndPublish
-  condition: and(succeeded(), eq(variables.isMain, 'true'))
+  condition: eq(variables.isMain, 'true')
   displayName: Build and Publish Image
   jobs:
     - job: BuildAndPublish 
