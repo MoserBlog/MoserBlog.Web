@@ -1,0 +1,16 @@
+{
+  "name": "moserblog-web",
+  "version": "1.0.0",
+  "description": "",
+  "author": "philippmos",
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "moserblogweb-styles": "1.0.1",
+    "clean-webpack-plugin": "4.0.0",
+    "copy-webpack-plugin": "11.0.0",
+    "webpack": "5.73.0",
+    "webpack-cli": "4.10.0"
+  }
+}
