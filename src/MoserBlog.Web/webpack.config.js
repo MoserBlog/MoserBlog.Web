@@ -8,6 +8,15 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'wwwroot/dist')
     },
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            }
+        ]
+    },
     plugins: [
         new CopyPlugin({
             patterns: [
@@ -15,5 +24,8 @@ module.exports = {
             ]
         }),
         new CleanWebpackPlugin()
-    ]
+    ],
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
 }
