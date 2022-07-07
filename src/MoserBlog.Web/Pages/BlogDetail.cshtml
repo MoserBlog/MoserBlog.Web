@@ -1,0 +1,52 @@
+﻿@page "/blog/{id}"
+@model BlogDetailModel
+
+<div class="grid">
+    <div class="grid__col--12">
+        <div class="blog-detail">
+            <div class="blog-detail__image lazy" data-bg="https://via.placeholder.com/1000x350"></div>
+                               
+            <div class="blog-detail__title">
+                <h2>BlogTitle</h2>
+            </div>
+            <div class="blog-detail__info">
+                <span class="blog-detail__info-item">By <a href="#" class="blog-detail__info-item-link">Max Mustermann</a></span>
+                <span class="blog-detail__info-item">dd.MM.yyyy</span>
+                <span class="blog-detail__info-item"><a href="#" class="blog-detail__info-item-link">10 Comments</a></span>
+            </div>
+            <div class="blog-detail__content">
+
+            </div>
+            <div class="blog-detail__footer">
+                <div class="blog-detail__footer-tags">
+                    <h3 class="blog-detail__footer-tags__title">Tags:</h3>
+                    <div class="blog-detail__footer-tags__list">
+                        <a class="blog-detail__footer-tags__list-item" href="#">Category1</a>
+                        <a class="blog-detail__footer-tags__list-item" href="#">Category2</a>
+                        <a class="blog-detail__footer-tags__list-item" href="#">Category3</a>
+                    </div>
+                </div>
+            
+                <div class="blog-detail__footer-author">
+                    <div class="blog-detail__footer-author-avatar">
+                        <img class="lazy" src="" data-src="https://via.placeholder.com/100" alt="Author">
+                    </div>
+                    <div class="blog-detail__footer-author-info">
+                        <h5 class="blog-detail__footer-author-info--title">Written by Max Mustermann</h5>
+                        <p class="blog-detail__footer-author-info--content">Author Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section PageStyles {
+    <link rel="stylesheet" href="~/dist/details.bundle.min.css" asp-append-version="true" />
+}
+
+@section PageScripts {
+    <script src="~/dist/details.bundle.min.js" asp-append-version="true" async></script>
+}

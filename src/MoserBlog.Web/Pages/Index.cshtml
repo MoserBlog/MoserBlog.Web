@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+
+
+<div class="grid">
+    <div class="grid__col--12">
+
+        @await Component.InvokeAsync("HomeOverview")
+
+    </div>
+</div>
+
+
+@section PageStyles {
+    <link rel="stylesheet" href="~/dist/home.bundle.min.css" asp-append-version="true" />
+}
+
+@section PageScripts {
+    <script src="~/dist/home.bundle.min.js" asp-append-version="true" async></script>
+}

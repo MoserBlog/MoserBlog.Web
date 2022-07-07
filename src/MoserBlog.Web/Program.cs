@@ -1,13 +1,18 @@
 ﻿using MoserBlog.Application;
 using MoserBlog.Persistence;
+using MoserBlog.Web;
+using MoserBlog.Web.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var services = builder.Services;
+builder.Services.AddRazorPages();
 
+var services = builder.Services;
 
 services.AddApplicationServices();
 services.AddPersistenceServices(builder.Configuration, builder.Environment.IsDevelopment());
+services.AddConfigurationServices(builder.Configuration);
+services.AddWebServices();
 
 services.AddControllersWithViews();
 
@@ -26,8 +31,13 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();
+
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHealthChecks("/healthz");
+});
+
 
 app.Run();

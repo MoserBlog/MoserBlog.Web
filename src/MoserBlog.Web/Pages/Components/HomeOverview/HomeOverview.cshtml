@@ -1,0 +1,45 @@
+﻿@using MoserBlog.Web.Services.Interfaces
+@inject IBlogService BlogService
+
+
+
+@foreach(var blogEntry in await BlogService.GetBlogEntriesForOverviewAsync())
+{
+    <div class="blog-entry">
+        <div class="grid">
+            <div class="grid__col--md-4 grid__col--xs-12">
+                <a href=""><div class="blog-entry__image lazy" data-bg="https://via.placeholder.com/260x200"></div></a>
+            </div>
+            <div class="grid__col--md-8 grid__col--xs-12 blog-entry__content">
+                <div class="blog-entry__info">
+                    <span class="blog-entry__info-item">@blogEntry.AuthorName</span>
+                    <span class="blog-entry__info-item">@blogEntry.PublishDate.ToShortDateString()</span>
+                    <span class="blog-entry__info-item">@blogEntry.Categories</span>
+                </div>
+                <h2 class="blog-entry__title"><a class="blog-entry__link" href="">@blogEntry.Title</a></h2>
+    
+                <div class="blog-entry__description">
+                    <p>@blogEntry.ShortDescription</p>
+                </div>
+                <div class="blog-entry__footer">
+                    <a class="blog-entry__footer-link blog-entry__link" href="">Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<nav class="pagination">
+    <ul class="pagination__items">
+        <li class="pagination__item pagination__item--active">
+            <a class="pagination__item-link">1</a>
+        </li>
+        <li class="pagination__item">
+            <a class="pagination__item-link" href="#">2</a>
+        </li>
+        <li class="pagination__item">
+            <a class="pagination__item-link" href="#">Next Page</a>
+        </li>
+    </ul>
+</nav>
