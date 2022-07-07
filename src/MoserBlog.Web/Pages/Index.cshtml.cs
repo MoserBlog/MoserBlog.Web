@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MoserBlog.Application.Features.BlogEntries.Queries.GetBlogEntryOverview;
 
@@ -21,11 +22,13 @@ public class IndexModel : PageModel
         _configuration = configuration;
     }
 
-    public async Task OnGet()
+    public async Task<IActionResult> OnGetAsync()
     {
         Items = await _mediator.Send(new GetBlogEntryOverviewQuery()
         {
             AmountOfElements = Convert.ToInt32(_configuration["AmountOfOverviewItems"])
         });
+
+        return Page();
     }
 }
