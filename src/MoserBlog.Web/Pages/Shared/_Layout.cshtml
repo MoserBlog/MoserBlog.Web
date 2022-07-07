@@ -1,26 +1,43 @@
-﻿<!DOCTYPE html>
+﻿@using MoserBlog.Web.Services.Interfaces
+@inject IMetadataService MetadataService
+
+@{
+    var pageTitle = MetadataService.GetPageTitle(ViewData["PageTitle"]?.ToString());
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>@ViewData["PageTitle"] - MoserBlog</title>
+
+        <title>@pageTitle</title>
+        
+        <meta name="title" content="@pageTitle">
+        <meta name="description" content="@MetadataService.GetPageDescription(ViewData["PageDescription"]?.ToString())">
+
+        <meta name="Robots" content="@MetadataService.GetRobotsValue()">
+
         
         <link rel="stylesheet" href="~/dist/base.bundle.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/dist/home.bundle.min.css" asp-append-version="true" />
+
+        @await RenderSectionAsync("PageStyles", required: false)
     </head>
     <body class="page">
-               
+
         @await Component.InvokeAsync("PageHeader")
 
         <main role="main" class="page-content">
             @RenderBody()
-        </main>       
+        </main>
         
         @await Component.InvokeAsync("PageFooter")
 
         <script src="~/dist/base.bundle.min.js" asp-append-version="true" async></script>
         <script src="~/dist/home.bundle.min.js" asp-append-version="true" async></script>
 
-        @await RenderSectionAsync("Scripts", required: false)
+        @await RenderSectionAsync("PageScripts", required: false)
     </body>
 </html>
