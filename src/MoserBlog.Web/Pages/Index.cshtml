@@ -1,15 +1,11 @@
-﻿@using MoserBlog.Application.Features.BlogEntries.Queries.GetBlogEntryOverview
+﻿@page
+@model IndexModel
 
-@model List<BlogEntryOverviewVm>
-
-@{
-    ViewData["Title"] = "HomePage";
-}
 
 <div class="grid">
     <div class="grid__col--12">
 
-        @foreach(var blogEntry in Model)
+        @foreach(var blogEntry in Model.Items)
         {
             <div class="blog-entry">
                 <div class="grid">
