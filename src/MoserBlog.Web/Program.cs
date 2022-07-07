@@ -33,4 +33,11 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHealthChecks("/healthz");
+});
+
+
 app.Run();
