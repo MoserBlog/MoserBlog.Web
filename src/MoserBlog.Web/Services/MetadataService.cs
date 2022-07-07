@@ -17,7 +17,7 @@ public class MetadataService : IMetadataService
 
     public string GetPageTitle(string? pageTitle)
     {
-        return $"{(string.IsNullOrEmpty(pageTitle) ? "" : $"{pageTitle} - ")}{_configuration["BlogMetaDataConfiguration:Name"]}";
+        return $"{(string.IsNullOrEmpty(pageTitle) ? "" : $"{pageTitle} - ")}{_configuration["SEO:PageTitleValue"]}";
     }
 
     public string GetPageDescription(string? pageDescription)
@@ -27,7 +27,7 @@ public class MetadataService : IMetadataService
 
     public string GetRobotsValue()
     {
-        if (bool.TryParse(_configuration["IndexAndFollow"], out var indexAndFollow) && indexAndFollow) {
+        if (bool.TryParse(_configuration["SEO:IndexAndFollow"], out var indexAndFollow) && indexAndFollow) {
             return "INDEX;FOLLOW";
         }
 
