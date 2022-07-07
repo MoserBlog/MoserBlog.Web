@@ -9,14 +9,14 @@
         <link rel="stylesheet" href="~/dist/home.bundle.min.css" asp-append-version="true" />
     </head>
     <body class="page">
-
-        @await Html.PartialAsync("Layout/PageHeader")
+               
+        @await Component.InvokeAsync("PageHeader")
 
         <main role="main" class="page-content">
             @RenderBody()
-        </main>
+        </main>       
         
-        @await Html.PartialAsync("Layout/PageFooter")
+        @await Component.InvokeAsync("PageFooter")
 
         <script src="~/dist/base.bundle.min.js" asp-append-version="true" async></script>
         <script src="~/dist/home.bundle.min.js" asp-append-version="true" async></script>
