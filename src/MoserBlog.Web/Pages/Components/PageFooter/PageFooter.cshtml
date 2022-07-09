@@ -1,10 +1,16 @@
-﻿<footer class="page-footer">
+﻿@using Microsoft.Extensions.Options
+@using MoserBlog.Web.Configurations
+
+@inject IOptions<BlogMetaDataConfig> BlogMetaDataConfig
+
+
+<footer class="page-footer">
     <div class="grid  page-footer__top">
     <div class="grid__col--sm-6 grid__col--xs-12">
         <div class="page-footer__top-about">
-            <h4 class="page-footer__title">MoserBlog</h4>
+            <h4 class="page-footer__title">@BlogMetaDataConfig.Value.Name</h4>
             <p>
-                <a class="page-footer__nav-item-link" href="" target="_blank" rel="nofollow noopener">
+                <a class="page-footer__nav-item-link" href="@BlogMetaDataConfig.Value.GithubUrl" target="_blank" rel="nofollow noopener">
                     <span class="icon-github"></span>
                     <span class="">GitHub</span>
                 </a>
@@ -46,7 +52,7 @@
     </div>
     <div class="grid page-footer__bottom">
         <div class="grid__col--sm-8 grid__col--xs-12 page-footer__bottom-copyright">
-            <p>2022 © Max Mustermann.</p>
+            <p>@BlogMetaDataConfig.Value.Copyright</p>
         </div>
         <div class="grid__col--sm-4 grid__col--xs-12 page-footer__bottom-legal">
             <a class="page-footer__bottom-legal-link">Impressum</a>

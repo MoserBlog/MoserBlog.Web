@@ -1,23 +1,7 @@
-﻿@using MoserBlog.Web.Services.Interfaces
-@inject IMetadataService MetadataService
-
-@{
-    var pageTitle = MetadataService.GetPageTitle(ViewData["PageTitle"]?.ToString());
-}
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <title>@pageTitle</title>
-        
-        <meta name="title" content="@pageTitle">
-        <meta name="description" content="@MetadataService.GetPageDescription(ViewData["PageDescription"]?.ToString())">
-
-        <meta name="Robots" content="@MetadataService.GetRobotsValue()">
+        @await Html.PartialAsync("_MetaData")
         
         <link rel="stylesheet" href="~/dist/base.bundle.min.css" asp-append-version="true" />
 

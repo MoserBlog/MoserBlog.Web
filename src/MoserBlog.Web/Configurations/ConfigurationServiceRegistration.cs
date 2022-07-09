@@ -2,10 +2,10 @@
 
 public static class ConfigurationServiceRegistration
 {
-    public static IServiceCollection AddConfigurationServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddConfigurationOptions(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<BlogMetaDataConfiguration>(
-            configuration.GetSection(nameof(BlogMetaDataConfiguration)));
+        services.Configure<BlogMetaDataConfig>(configuration.GetSection(nameof(BlogMetaDataConfig)));
+        services.Configure<SeoConfig>(configuration.GetSection(nameof(SeoConfig)));
 
         return services;
     }

@@ -11,8 +11,8 @@ var services = builder.Services;
 
 services.AddApplicationServices();
 services.AddPersistenceServices(builder.Configuration, builder.Environment.IsDevelopment());
-services.AddConfigurationServices(builder.Configuration);
 services.AddWebServices();
+services.AddConfigurationOptions(builder.Configuration);
 
 services.AddControllersWithViews();
 
