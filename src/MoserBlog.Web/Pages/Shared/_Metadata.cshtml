@@ -1,0 +1,16 @@
+﻿@using MoserBlog.Web.Services.Interfaces
+@inject IMetadataService MetadataService
+
+@{
+    var pageTitle = MetadataService.GetPageTitle(ViewData["PageTitle"]?.ToString());
+}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>@pageTitle</title>
+        
+<meta name="title" content="@pageTitle">
+<meta name="description" content="@MetadataService.GetPageDescription(ViewData["PageDescription"]?.ToString())">
+
+<meta name="Robots" content="@MetadataService.GetRobotsValue()">

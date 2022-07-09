@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MoserBlog.Application.Features.BlogEntries.Queries.GetBlogEntryDetail;
 using MoserBlog.Application.Features.BlogEntries.Queries.GetBlogEntryOverview;
 using MoserBlog.Web.Services.Interfaces;
 
@@ -25,6 +26,14 @@ public class BlogService : IBlogService
         return await _mediator.Send(new GetBlogEntryOverviewQuery()
         {
             AmountOfElements = Convert.ToInt32(_configuration["AmountOfOverviewItems"])
+        });
+    }
+
+    public async Task<BlogEntryDetailVm> TryGetBlogEntryByUrlName(string urlName)
+    {
+        return await _mediator.Send(new GetBlogEntryDetailQuery()
+        {
+            UrlName = urlName
         });
     }
 }

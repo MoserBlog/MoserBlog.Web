@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Extensions.Options;
+using MoserBlog.Web.Configurations;
 using MoserBlog.Web.Services.Interfaces;
 
 namespace MoserBlog.Web.Services;
@@ -6,31 +7,32 @@ namespace MoserBlog.Web.Services;
 public class MetadataService : IMetadataService
 {
     private readonly ILogger<BlogService> _logger;
-    private readonly IConfiguration _configuration;
+    private readonly IOptions<BlogMetaDataConfig> _blogMetaDataConfig;
+    private readonly IOptions<SeoConfig> _seoConfig;
 
     public MetadataService(ILogger<BlogService> logger,
-        IConfiguration configuration)
+        IOptions<BlogMetaDataConfig> blogMetaDataConfig,
+        IOptions<SeoConfig> seoConfig)
     {
         _logger = logger;
-        _configuration = configuration;
+        _blogMetaDataConfig = blogMetaDataConfig;
+        _seoConfig = seoConfig;
     }
 
     public string GetPageTitle(string? pageTitle)
     {
-        return $"{(string.IsNullOrEmpty(pageTitle) ? "" : $"{pageTitle} - ")}{_configuration["SEO:PageTitleValue"]}";
+        return $"{(string.IsNullOrEmpty(pageTitle) ? "" : $"{pageTitle} - ")}{_seoConfig.Value.PageTitleValue}";
     }
 
     public string GetPageDescription(string? pageDescription)
     {
-        return _configuration["BlogMetaDataConfiguration:Name"];
+        return _blogMetaDataConfig.Value.Name ?? "";
     }
 
     public string GetRobotsValue()
     {
-        if (bool.TryParse(_configuration["SEO:IndexAndFollow"], out var indexAndFollow) && indexAndFollow) {
-            return "INDEX;FOLLOW";
-        }
-
-        return "NOINDEX,NOFOLLOW";
+        return _seoConfig.Value.IndexAndfollow
+            ? "INDEX;FOLLOW"
+            : "NOINDEX,NOFOLLOW";
     }
 }

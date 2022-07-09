@@ -1,4 +1,4 @@
-﻿@page "/blog/{id}"
+﻿@page "/blog/{urlname}"
 @model BlogDetailModel
 
 <div class="grid">
@@ -7,12 +7,12 @@
             <div class="blog-detail__image lazy" data-bg="https://via.placeholder.com/1000x350"></div>
                                
             <div class="blog-detail__title">
-                <h2>BlogTitle</h2>
+                <h2>@Model.ViewModel?.Title</h2>
             </div>
             <div class="blog-detail__info">
-                <span class="blog-detail__info-item">By <a href="#" class="blog-detail__info-item-link">Max Mustermann</a></span>
-                <span class="blog-detail__info-item">dd.MM.yyyy</span>
-                <span class="blog-detail__info-item"><a href="#" class="blog-detail__info-item-link">10 Comments</a></span>
+                <span class="blog-detail__info-item">By <a href="#" class="blog-detail__info-item-link">@Model.ViewModel?.Author?.Name</a></span>
+                <span class="blog-detail__info-item">@Model.ViewModel?.PublishDate?.ToString("dd.MM.yyyy")</span>
+                @*<span class="blog-detail__info-item"><a href="#" class="blog-detail__info-item-link">10 Comments</a></span>*@
             </div>
             <div class="blog-detail__content">
 
@@ -21,19 +21,22 @@
                 <div class="blog-detail__footer-tags">
                     <h3 class="blog-detail__footer-tags__title">Tags:</h3>
                     <div class="blog-detail__footer-tags__list">
-                        <a class="blog-detail__footer-tags__list-item" href="#">Category1</a>
-                        <a class="blog-detail__footer-tags__list-item" href="#">Category2</a>
-                        <a class="blog-detail__footer-tags__list-item" href="#">Category3</a>
+                        @foreach(var category in Model.ViewModel?.Categories ?? new List<string>())
+                        {
+                            <a class="blog-detail__footer-tags__list-item" href="#">Category1</a>
+                            <a class="blog-detail__footer-tags__list-item" href="#">Category2</a>
+                            <a class="blog-detail__footer-tags__list-item" href="#">Category3</a>   
+                        }
                     </div>
                 </div>
             
                 <div class="blog-detail__footer-author">
                     <div class="blog-detail__footer-author-avatar">
-                        <img class="lazy" src="" data-src="https://via.placeholder.com/100" alt="Author">
+                        <img class="lazy" src="" data-src="@(Model.ViewModel?.Author?.ProfilePictureUrl ?? "https://via.placeholder.com/100")" alt="Author">
                     </div>
                     <div class="blog-detail__footer-author-info">
-                        <h5 class="blog-detail__footer-author-info--title">Written by Max Mustermann</h5>
-                        <p class="blog-detail__footer-author-info--content">Author Description</p>
+                        <h5 class="blog-detail__footer-author-info--title">Written by @(Model.ViewModel?.Author?.Name ?? "Musterauthor")</h5>
+                        <p class="blog-detail__footer-author-info--content">@(Model.ViewModel?.Author?.Description ?? "Beispielbeschreibung")</p>
                     </div>
                 </div>
             </div>
