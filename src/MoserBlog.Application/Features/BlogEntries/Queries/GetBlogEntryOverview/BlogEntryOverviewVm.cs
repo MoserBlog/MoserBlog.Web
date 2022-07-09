@@ -7,4 +7,5 @@ public class BlogEntryOverviewVm
     public DateTime PublishDate { get; set; }
     public string Categories { get; set; }
     public string AuthorName { get; set; }
+    public string UrlName { get; set; }
 }
