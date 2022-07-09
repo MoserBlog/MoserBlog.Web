@@ -20,7 +20,7 @@ module.exports = {
     plugins: [
         new CopyPlugin({
             patterns: [
-              { from: "node_modules/moserblogweb-styles/dist" }
+              { from: "node_modules/@philippmos/moserblog-styles/dist" }
             ]
         }),
         new CleanWebpackPlugin()

@@ -7,9 +7,9 @@
     "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
+    "@philippmos/moserblog-styles": "1.0.0",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
-    "moserblogweb-styles": "1.0.1",
     "ts-loader": "9.3.1",
     "typescript": "4.7.4",
     "webpack": "5.73.0",
