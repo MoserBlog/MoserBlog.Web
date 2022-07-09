@@ -1,6 +1,11 @@
-﻿<header class="page-header">
+﻿@using Microsoft.Extensions.Options
+@using MoserBlog.Web.Configurations
+
+@inject IOptions<BlogMetaDataConfig> BlogMetaDataConfig
+
+<header class="page-header">
     <div class="logo">
-        <h1><a class="logo__link">MoserBlog</a></h1>
+        <h1><a class="logo__link">@BlogMetaDataConfig.Value.Name</a></h1>
     </div>
         
     <nav class="navigation">
