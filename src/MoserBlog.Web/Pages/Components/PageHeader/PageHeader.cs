@@ -16,7 +16,8 @@ public class PageHeader : ViewComponent
         new()
         {
             Title = "Blogs",
-            RouteUrl = "/blogs"
+            RouteUrl = "/blogs",
+            AlternativeRouteUrls = new() { "/blogdetail" }
         },
         new()
         {
@@ -31,11 +32,13 @@ public class PageHeader : ViewComponent
             ? ViewContext.ActionDescriptor.RouteValues["page"] ?? "/" : "/";
 
         _navigationItems
-            .Where(x => x.RouteUrl.Equals(currentRoute.ToLower()))
+            .Where(
+                x => x.RouteUrl.ToLower().Equals(currentRoute.ToLower()) || 
+                x.AlternativeRouteUrls.Any(y => y.ToLower().Equals(currentRoute.ToLower())))
             .ToList()
-            .ForEach(y => y.IsActive = true);
+            .ForEach(y => y.IsCurrent = true);
 
-        return View(nameof(PageHeader), _navigationItems);
+        return View(nameof(PageHeader), _navigationItems.Where(x => x.IsActive).ToList().AsReadOnly());
     }
 
 
@@ -43,6 +46,8 @@ public class PageHeader : ViewComponent
     {
         public string Title { get; set; } = string.Empty;
         public string RouteUrl { get; set; } = string.Empty;
-        public bool IsActive { get; set; } = false;
+        public List<string> AlternativeRouteUrls { get; set; } = new();
+        public bool IsActive { get; set; } = true;
+        public bool IsCurrent { get; set; } = false;
     }
 }

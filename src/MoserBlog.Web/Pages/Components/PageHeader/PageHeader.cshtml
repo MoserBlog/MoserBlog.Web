@@ -1,10 +1,11 @@
 ﻿@using Microsoft.Extensions.Options
 @using MoserBlog.Web.Configurations
+@using System.Collections.ObjectModel
 @using static MoserBlog.Web.Pages.Components.PageHeader.PageHeader
 
 @inject IOptions<BlogMetaDataConfig> BlogMetaDataConfig
 
-@model List<NavigationItem>
+@model ReadOnlyCollection<NavigationItem>
 
 <header class="page-header">
     <div class="logo">
@@ -17,7 +18,7 @@
         <ul class="navigation__items">
             @foreach (var navigationItem in Model)
             {
-                <li class="navigation__item @(navigationItem.IsActive ? "navigation__item--active" : "")">
+                <li class="navigation__item @(navigationItem.IsCurrent ? "navigation__item--active" : "")">
                     <a href="@navigationItem.RouteUrl" class="navigation__item-link">@navigationItem.Title</a>
                 </li>
             }
