@@ -1,35 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using Microsoft.Extensions.Options;
+using MoserBlog.Web.Configurations;
 
 namespace MoserBlog.Web.Pages.Components.PageHeader;
 
 [ViewComponent]
 public class PageHeader : ViewComponent
 {
-    private readonly List<NavigationItem> _navigationItems = new()
+    private const string _defaultRouteUrl = "/";
+
+    private List<NavItem> _navigationItems = new();
+
+    private readonly IOptions<PageNavigationConfig> _pageNavigationConfig;
+
+    public PageHeader(IOptions<PageNavigationConfig> pageNavigationConfig)
     {
-        new()
-        {
-            Title = "Home",
-            RouteUrl = "/index"
-        },
-        new()
-        {
-            Title = "Blogs",
-            RouteUrl = "/blogs",
-            AlternativeRouteUrls = new() { "/blogdetail" }
-        },
-        new()
-        {
-            Title = "About",
-            RouteUrl = "/about"
-        }
-    };
+        _pageNavigationConfig = pageNavigationConfig;
+    }
 
     public IViewComponentResult Invoke()
     {
+        _pageNavigationConfig.Value.NavigationItems.ForEach(x => _navigationItems.Add(new(x.Title, x.RouteUrl, x.AlternativeRouteUrls, x.IsActive)));
+
         var currentRoute = ViewContext.ActionDescriptor.RouteValues.ContainsKey("page")
-            ? ViewContext.ActionDescriptor.RouteValues["page"] ?? "/" : "/";
+            ? ViewContext.ActionDescriptor.RouteValues["page"] ?? _pageNavigationConfig.Value.DefaultRouteUrl : _pageNavigationConfig.Value.DefaultRouteUrl;
 
         _navigationItems
             .Where(
@@ -42,12 +36,13 @@ public class PageHeader : ViewComponent
     }
 
 
-    public record NavigationItem
+    public record NavItem(
+        string Title,
+        string RouteUrl,
+        List<string> AlternativeRouteUrls,
+        bool IsActive,
+        bool IsCurrent = false)
     {
-        public string Title { get; set; } = string.Empty;
-        public string RouteUrl { get; set; } = string.Empty;
-        public List<string> AlternativeRouteUrls { get; set; } = new();
-        public bool IsActive { get; set; } = true;
-        public bool IsCurrent { get; set; } = false;
+        public bool IsCurrent { get; set; } = IsCurrent;
     }
 }

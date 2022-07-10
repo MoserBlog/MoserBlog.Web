@@ -6,6 +6,7 @@ public static class ConfigurationServiceRegistration
     {
         services.Configure<BlogMetaDataConfig>(configuration.GetSection(nameof(BlogMetaDataConfig)));
         services.Configure<SeoConfig>(configuration.GetSection(nameof(SeoConfig)));
+        services.Configure<PageNavigationConfig>(configuration.GetSection(nameof(PageNavigationConfig)));
 
         return services;
     }
