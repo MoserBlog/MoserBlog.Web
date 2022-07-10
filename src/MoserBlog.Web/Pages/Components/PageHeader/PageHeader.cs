@@ -7,8 +7,6 @@ namespace MoserBlog.Web.Pages.Components.PageHeader;
 [ViewComponent]
 public class PageHeader : ViewComponent
 {
-    private const string _defaultRouteUrl = "/";
-
     private List<NavItem> _navigationItems = new();
 
     private readonly IOptions<PageNavigationConfig> _pageNavigationConfig;
