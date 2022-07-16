@@ -19,4 +19,6 @@ RUN dotnet publish "MoserBlog.Web.csproj" -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
+EXPOSE 80
 ENTRYPOINT ["dotnet", "MoserBlog.Web.dll"]
