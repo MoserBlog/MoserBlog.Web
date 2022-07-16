@@ -9,6 +9,7 @@ public static class WebServiceRegistration
     public static IServiceCollection AddWebServices(this IServiceCollection services)
     {
         services.AddScoped<IBlogService, BlogService>();
+        services.AddScoped<IMediaService, MediaService>();
         services.AddScoped<IMetadataService, MetadataService>();
 
 

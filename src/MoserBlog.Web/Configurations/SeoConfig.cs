@@ -2,6 +2,6 @@
 
 public class SeoConfig
 {
-    public string? PageTitleValue { get; set; }
-    public bool IndexAndfollow { get; set; }
+    public string? PageTitleValue { get; init; }
+    public bool IndexAndfollow { get; init; }
 }

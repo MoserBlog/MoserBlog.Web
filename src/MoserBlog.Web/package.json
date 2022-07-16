@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.config.js"
   },
   "devDependencies": {
-    "@philippmos/moserblog-styles": "1.0.0",
+    "@philippmos/moserblog-styles": "1.0.2",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.1",
