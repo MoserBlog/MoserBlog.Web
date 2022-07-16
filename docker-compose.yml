@@ -8,20 +8,22 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "5112:80"
+    env_file:
+      - .env
     depends_on:
       db:
         condition: service_healthy
       mediatool:
         condition: service_started
-    env_file:
-      - .env
     links:
       - "db:localdatabase"
 
   mediatool:
-    image: "philippmos/moserblog-mediatool:3106"
+    image: "philippmos/moserblog-mediatool:3113"
     ports:
       - "5113:80"
+    env_file:
+      - .env
 
   db:
     image: "mcr.microsoft.com/mssql/server:2019-latest"

@@ -10,7 +10,7 @@ builder.Services.AddRazorPages();
 var services = builder.Services;
 
 services.AddApplicationServices();
-services.AddPersistenceServices(builder.Configuration, builder.Environment.IsDevelopment());
+services.AddPersistenceServices(builder.Configuration);
 services.AddWebServices();
 services.AddConfigurationOptions(builder.Configuration);
 
