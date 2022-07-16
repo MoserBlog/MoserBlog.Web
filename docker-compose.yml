@@ -7,19 +7,33 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "8080:80"
+      - "5112:80"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      mediatool:
+        condition: service_started
     env_file:
       - .env
     links:
       - "db:localdatabase"
 
+  mediatool:
+    image: "philippmos/moserblog-mediatool:3106"
+    ports:
+      - "5113:80"
+
   db:
-    image: "mcr.microsoft.com/mssql/server"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
     ports:
       - "1433:1433"
     volumes:
       - app_db:/var/opt/mssql
     env_file:
       - .env
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$SA_PASSWORD" -Q "SELECT 1" || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
