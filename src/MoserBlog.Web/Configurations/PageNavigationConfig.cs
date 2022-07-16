@@ -2,14 +2,14 @@
 
 public class PageNavigationConfig
 {
-    public string DefaultRouteUrl { get; set; } = string.Empty;
-    public List<NavigationItem> NavigationItems { get; set; } = new();
+    public string DefaultRouteUrl { get; init; } = string.Empty;
+    public List<NavigationItem> NavigationItems { get; init; } = new();
 }
 
 public class NavigationItem
 {
-    public string Title { get; set; } = string.Empty;
-    public string RouteUrl { get; set; } = string.Empty;
-    public List<string> AlternativeRouteUrls { get; set; } = new();
-    public bool IsActive { get; set; } = true;
+    public string Title { get; init; } = string.Empty;
+    public string RouteUrl { get; init; } = string.Empty;
+    public List<string> AlternativeRouteUrls { get; init; } = new();
+    public bool IsActive { get; init; } = true;
 }

@@ -20,7 +20,6 @@ public class BlogService : IBlogService
         _configuration = configuration;
     }
 
-
     public async Task<List<BlogEntryOverviewVm>> GetBlogEntriesForOverviewAsync()
     {
         return await _mediator.Send(new GetBlogEntryOverviewQuery()

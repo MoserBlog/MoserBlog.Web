@@ -2,7 +2,7 @@
 
 public class BlogMetaDataConfig
 {
-    public string? Name { get; set; }
-    public string? Copyright { get; set; }
-    public string? GithubUrl { get; set; }
+    public string? Name { get; init; }
+    public string? Copyright { get; init; }
+    public string? GithubUrl { get; init; }
 }

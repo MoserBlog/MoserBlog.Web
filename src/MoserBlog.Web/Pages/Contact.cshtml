@@ -1,0 +1,39 @@
+﻿@page "/contact"
+@model ContactModel
+
+
+<div class="grid">
+    <div class="grid__col--12">
+
+        <h1 class="headline headline--h1">Contact</h1>
+
+        <div class="grid">
+            <div class="grid__col--12">
+
+                <div class="grid">
+                    <div class="grid__col--6 grid__col--xs-12">
+                        <div class="input-group">
+                            <label for="contact-name" class="input-label">Your name</label>
+                            <input id="contact-name" class="input">
+                        </div>
+                    </div>
+                    <div class="grid__col--6 grid__col--xs-12">
+                        <div class="input-group">
+                            <label for="contact-email" class="input-label">Your email</label>
+                            <input id="contact-email" class="input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="contact-message" class="input-label">Your message</label>
+                    <textarea id="contact-message" class="input-textarea"></textarea>                        
+                </div>
+
+                <button type="button" class="button">Send</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
