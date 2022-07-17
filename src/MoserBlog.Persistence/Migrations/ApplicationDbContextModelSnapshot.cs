@@ -24,11 +24,11 @@ namespace MoserBlog.Persistence.Migrations
 
             modelBuilder.Entity("BlogEntryCategory", b =>
                 {
-                    b.Property<int>("BlogEntriesId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("BlogEntriesId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CategoriesId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CategoriesId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("BlogEntriesId", "CategoriesId");
 
@@ -39,11 +39,9 @@ namespace MoserBlog.Persistence.Migrations
 
             modelBuilder.Entity("MoserBlog.Domain.Blog.Author", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -70,14 +68,12 @@ namespace MoserBlog.Persistence.Migrations
 
             modelBuilder.Entity("MoserBlog.Domain.Blog.BlogEntry", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("AuthorId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -109,11 +105,9 @@ namespace MoserBlog.Persistence.Migrations
 
             modelBuilder.Entity("MoserBlog.Domain.Blog.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("datetime2");
@@ -131,14 +125,12 @@ namespace MoserBlog.Persistence.Migrations
 
             modelBuilder.Entity("MoserBlog.Domain.Blog.ContentSection", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int?>("BlogEntryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("BlogEntryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
