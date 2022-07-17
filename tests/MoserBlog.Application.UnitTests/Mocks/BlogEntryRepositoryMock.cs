@@ -12,7 +12,7 @@ public class BlogEntryRepositoryMock
         {
             new BlogEntry
             {
-                Id = 1,
+                Id = new Guid(),
                 Title = "First Blog Entry",
                 ShortDescription = "This is the first Blog Entry",
                 UrlName = "first-blog-entry",
@@ -22,7 +22,7 @@ public class BlogEntryRepositoryMock
             },
             new BlogEntry
             {
-                Id = 2,
+                Id = new Guid(),
                 Title = "Second Blog Entry",
                 ShortDescription = "This is the second Blog Entry",
                 UrlName = "second-blog-entry",
